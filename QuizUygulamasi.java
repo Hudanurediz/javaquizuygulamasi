@@ -13,7 +13,9 @@ import java.util.Arrays;
 public class QuizUygulamasi {
 
     JFrame frame;
-    JRadioButton rb1,rb2,rb3;
+    JRadioButton rb1=new JRadioButton();
+    JRadioButton rb2=new JRadioButton();
+    JRadioButton rb3=new JRadioButton();
     JButton button, buttonNext;
     JLabel soru1 = new JLabel();
     Font font;
@@ -27,6 +29,7 @@ public class QuizUygulamasi {
 
     QuizUygulamasi() {
         questions = new ArrayList <String>();
+        answer = "James Gosling";
         loadQuestionsFromFile("C:\\Users\\hudan\\OneDrive\\Masaüstü\\javaorn\\sorular.txt");
         runQuiz();
         frame = new JFrame();
@@ -34,18 +37,11 @@ public class QuizUygulamasi {
 
         parentComponent = new JFrame();
 
-        answer = "James Gosling";
-
         font = new Font(Font.SANS_SERIF, Font.BOLD, 18);
 
         button = new JButton("Gönder");
 
         buttonNext = new JButton("Sonraki soru");
-
-        rb1 = new JRadioButton(generateRandomString());
-        rb2 = new JRadioButton(generateRandomString());
-        rb3 = new JRadioButton(answer);
-        
 
         buttonGroup = new ButtonGroup();
         buttonGroup.add(rb1);
@@ -167,6 +163,9 @@ public class QuizUygulamasi {
         String question = questions.get(randomIndex);
         questions.remove(randomIndex);
         soru1.setText(question);
+        rb1.setText(generateRandomString());
+        rb2.setText(answer);
+        rb3.setText(generateRandomString());
         System.out.println("Question: " + question);
     }
 
